@@ -1,0 +1,14 @@
+services:
+  api:
+    build: .
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app
+    env_file:
+      - environment/api.dev.env
+
+  db:
+    image: postgres:alpine
+    env_file:
+      - environment/api.dev.env
