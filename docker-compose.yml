@@ -9,6 +9,8 @@ services:
       - environment/api.dev.env
 
   db:
+    ports:
+      - 5432:5432
     image: postgres:alpine
     env_file:
       - environment/api.dev.env
