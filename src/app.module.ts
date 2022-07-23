@@ -4,6 +4,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 import { ProjectModule } from "./project/projet.module";
 import { PrismaService } from './prisma/prisma.service';
+import { EquipmentService } from './equipment/equipment.service';
 
 @Module({
   imports: [
@@ -18,6 +19,6 @@ import { PrismaService } from './prisma/prisma.service';
     }),
     ProjectModule
 ],
-  providers: [PrismaService],
+  providers: [PrismaService, EquipmentService],
 })
 export class AppModule {}
