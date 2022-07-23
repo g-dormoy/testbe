@@ -15,4 +15,18 @@ export interface IQuery {
     project(): Nullable<Project> | Promise<Nullable<Project>>;
 }
 
+export interface Manufacturer {
+    id: number;
+    name: string;
+    equipments: Nullable<Equipment>[];
+}
+
+export interface Equipment {
+    id: number;
+    name: string;
+    manufacturer: Manufacturer;
+    kwh: number;
+    cost: number;
+}
+
 type Nullable<T> = T | null;

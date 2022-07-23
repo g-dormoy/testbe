@@ -1,7 +1,21 @@
 type Project {
-    name: String
+  name: String
 }
 
 type Query {
-    project: Project
+  project: Project
+}
+
+type Manufacturer {
+  id: Int!
+  name: String!
+  equipments: [Equipment]!
+}
+
+type Equipment {
+  id: Int!
+  name: String!
+  manufacturer: Manufacturer!
+  kwh: Int!
+  cost: Int!
 }
