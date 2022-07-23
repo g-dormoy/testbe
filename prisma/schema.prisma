@@ -3,6 +3,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  binaryTargets = ["native"]
 }
 
 datasource db {
@@ -11,16 +12,16 @@ datasource db {
 }
 
 model Manufacturer {
-    id Int @default(autoincrement()) @id
-    name String @db.VarChar(255)
-    equipments Equipment[]
+  id Int @default(autoincrement()) @id
+  name String @db.VarChar(255)
+  equipments Equipment[]
 }
 
 model Equipment {
-    id Int @default(autoincrement()) @id
-    name String @db.VarChar(255)
-    manufacturer Manufacturer @relation(fields: [manufacturerId], references: [id])
-    manufacturerId Int
-    kwh Int
-    cost Int
+  id Int @default(autoincrement()) @id
+  name String @db.VarChar(255)
+  manufacturer Manufacturer @relation(fields: [manufacturerId], references: [id])
+  manufacturerId Int
+  kwh Int
+  cost Int
 }
