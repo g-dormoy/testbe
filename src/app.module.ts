@@ -5,6 +5,7 @@ import { join } from 'path';
 import { ProjectModule } from "./project/projet.module";
 import { PrismaService } from './prisma/prisma.service';
 import { EquipmentService } from './equipment/equipment.service';
+import { ManufacturerService } from './manufacturer/manufacturer.service';
 
 @Module({
   imports: [
@@ -19,6 +20,6 @@ import { EquipmentService } from './equipment/equipment.service';
     }),
     ProjectModule
 ],
-  providers: [PrismaService, EquipmentService],
+  providers: [PrismaService, EquipmentService, ManufacturerService],
 })
 export class AppModule {}
