@@ -22,5 +22,5 @@ model Equipment {
     manufacturer Manufacturer @relation(fields: [manufacturerId], references: [id])
     manufacturerId Int
     kwh Int
-    cout Int
+    cost Int
 }
