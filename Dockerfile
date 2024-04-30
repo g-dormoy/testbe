@@ -8,35 +8,16 @@
 #
 #
 # BUILDER PART
-FROM --platform=linux/amd64 node:lts-gallium AS builder
+FROM --platform=linux/amd64 node:lts-gallium
 
 # Built env
 WORKDIR /app
 
-# Copy only needed stuff to install. This is to take advantage on docker cache system
-# Copy package.json and package-lock.json
-COPY package*.json .
-COPY prisma ./prisma/
-
-# Install app dependencies
-RUN npm install
-
 # Copy the rest of the code for full build
 COPY . .
 
-# Build application
-RUN npm run build
-
-# RUNNER PART
-FROM --platform=linux/amd64 node:lts-alpine AS runner
-
-WORKDIR /app
-
-# Copy the builds
-COPY --from=builder /app/node_modules /app/node_modules
-COPY --from=builder /app/package*.json /app/
-COPY --from=builder /app/dist /app/dist
-COPY --from=builder /app/prisma ./prisma
+RUN npm install
+RUN npm install -g @nestjs/cli
 
 # Expose the port form which the app listen
 EXPOSE 3000
