@@ -13,6 +13,9 @@ FROM --platform=linux/amd64 node:lts-gallium
 # Built env
 WORKDIR /app
 
+RUN apt-get update
+RUN apt-get install -y libssl-dev
+
 # Copy the rest of the code for full build
 COPY . .
 
